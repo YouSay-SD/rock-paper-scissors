@@ -4,6 +4,7 @@ import Header from './header'
 import styled from 'styled-components'
 import Wrapper from './wrapper'
 import Table from './table'
+import Rules from './rules'
 
 const AppStyled = styled.main`
   background-image: radial-gradient(circle at top, #1F3757 0%, #131537 100%);
@@ -35,7 +36,7 @@ function App() {
 
           <Table />
 
-          <span>Rules</span>
+          <Rules />
 
         </div>
 
