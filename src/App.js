@@ -7,7 +7,11 @@ import Wrapper from './wrapper'
 const AppStyled = styled.main`
   background-image: radial-gradient(circle at top, #1F3757 0%, #131537 100%);
   min-height: 100vh;
-  padding: 2em;
+  padding: 30px;
+
+  body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+  }
 `
 
 function App() {
