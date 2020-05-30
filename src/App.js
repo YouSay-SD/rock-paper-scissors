@@ -7,12 +7,19 @@ import Table from './table'
 
 const AppStyled = styled.main`
   background-image: radial-gradient(circle at top, #1F3757 0%, #131537 100%);
-  min-height: 100vh;
-  padding: 30px;
   color: white;
-
+  
   body {
     font-family: 'Barlow Semi Condensed', sans-serif;
+  }
+
+  .app-content {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `
 
@@ -22,9 +29,15 @@ function App() {
 
       <Wrapper>
 
-        <Header />
+        <div className="app-content">
 
-        <Table />
+          <Header />
+
+          <Table />
+
+          <span>Rules</span>
+
+        </div>
 
       </Wrapper>
 
