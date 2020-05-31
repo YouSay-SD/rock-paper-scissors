@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Token from './token'
 
@@ -10,7 +10,7 @@ const TableStyled = styled.div`
     gap: 40px 50px;
     margin: 30px 0;
     background-image: url('../images/bg-triangle.svg');
-    background-size: 200px;
+    background-size: ${({ playing }) => !playing ? '200px' : '0' };
     background-position: center;
     background-repeat: no-repeat;
 
@@ -26,15 +26,36 @@ const TableStyled = styled.div`
 `
 
 function Table() {
+
+    const [ playing, setPlaying ] = useState( false )
+
+    const onClick = ( name ) => {
+        console.log( name )
+
+        setPlaying( true )
+    }
+
     return (
-        <TableStyled>
+        <TableStyled playing={ playing }>
+
+            {
+                !playing ? (
+
+                    <>
+                        <Token name="paper" onClick={ onClick } />
             
-            <Token name="paper" />
+                        <Token name="scissors" onClick={ onClick } />
+            
+                        <Token name="rock" onClick={ onClick } />
+                    </>
 
-            <Token name="scissors" />
+                ) : (
 
-            <Token name="rock" />
-
+                    <p>Estoy Jugando</p>
+                    
+                )
+            }
+            
         </TableStyled>
     )
 }

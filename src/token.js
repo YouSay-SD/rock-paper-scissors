@@ -44,9 +44,14 @@ const colors = {
     }
 }
 
-function Token({ name }) {
-    return (
-        <TokenStyled color={ colors[ name ] }>
+function Token({ name, onClick }) {
+
+    const handleClick = () => {
+        onClick( name )
+    }
+
+    return ( 
+        <TokenStyled color={ colors[ name ] } onClick={ handleClick }>
 
             <div className="box-token">
 
