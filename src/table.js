@@ -28,11 +28,11 @@ const TableStyled = styled.div`
 function Table() {
 
     const [ playing, setPlaying ] = useState( false )
+    const [ pick, setPick ] = useState( ' ' )
 
     const onClick = ( name ) => {
-        console.log( name )
-
         setPlaying( true )
+        setPick( name )
     }
 
     return (
@@ -40,19 +40,22 @@ function Table() {
 
             {
                 !playing ? (
-
                     <>
                         <Token name="paper" onClick={ onClick } />
-            
                         <Token name="scissors" onClick={ onClick } />
-            
                         <Token name="rock" onClick={ onClick } />
                     </>
-
                 ) : (
+                    <section className="in-game">
+                        <div>
+                            <Token name={ pick } />
+                            <p>You Picked</p>
+                        </div>
 
-                    <p>Estoy Jugando</p>
-                    
+                        <div>
+                            <p>The house Picked</p>
+                        </div>
+                    </section>
                 )
             }
             

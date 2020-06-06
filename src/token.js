@@ -44,11 +44,13 @@ const colors = {
     }
 }
 
-function Token({ name, onClick }) {
+function Token({ name = '', onClick }) {
 
     const handleClick = () => {
         onClick( name )
     }
+
+    const color = (colors[ name ]) ? colors[ name ] : color.default
 
     return ( 
         <TokenStyled color={ colors[ name ] } onClick={ handleClick }>
