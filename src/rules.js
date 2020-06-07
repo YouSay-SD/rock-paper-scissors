@@ -59,7 +59,9 @@ function Rules() {
                 )
             }
 
-            <Button onClick={ handleToggleClick } />
+            <Button onClick={ handleToggleClick } >
+                Rules
+            </Button>
 
         </RulesStyled>
     )

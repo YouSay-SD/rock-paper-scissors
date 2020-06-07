@@ -15,11 +15,11 @@ const ButtonStyled = styled.div`
     line-height: 1;
 `
 
-function Button({ ...props }) {
+function Button({ children, ...props }) {
     return (
         <ButtonStyled { ...props }>
 
-            Rules
+            { children }
 
         </ButtonStyled>
     )
