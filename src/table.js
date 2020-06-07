@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Token from './token'
+import Button from './button'
 
 const TableStyled = styled.div`
     display: grid;
@@ -23,16 +24,40 @@ const TableStyled = styled.div`
         height: 10px;
         background-color: black;
     }
+
+    .in-game {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: .8em;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
 `
 
+const elements = [
+    'paper',
+    'scissors',
+    'rock'
+]
+ 
 function Table() {
 
+    //const [ score, setScore ] = useState( 0 )
     const [ playing, setPlaying ] = useState( false )
-    const [ pick, setPick ] = useState( ' ' )
+    const [ pick, setPick ] = useState( '' )
+    const getRandomInt = ( min, max ) => {
+        return Math.floor( Math.random() * ( max - min )) + min
+    }
 
     const onClick = ( name ) => {
+        console.log( 'La casa eligio: ', elements[getRandomInt(0, 3)] )
         setPlaying( true )
         setPick( name )
+    }
+
+    // Try Again
+    const handleTryAgainClick = () => {
+        setPlaying( false );
     }
 
     return (
@@ -46,16 +71,24 @@ function Table() {
                         <Token name="rock" onClick={ onClick } />
                     </>
                 ) : (
-                    <section className="in-game">
-                        <div>
+                    <>
+                        <div className="in-game">
                             <Token name={ pick } />
                             <p>You Picked</p>
                         </div>
 
-                        <div>
+                        <div className="in-game">
+                            <Token />
                             <p>The house Picked</p>
                         </div>
-                    </section>
+
+                        <div className="results">
+                            <h2>YOU ???</h2>
+                            <Button onClick={ handleTryAgainClick }>
+                                TRY AGAIN
+                            </Button>
+                        </div>
+                    </>
                 )
             }
             
