@@ -15,6 +15,12 @@ const ButtonStyled = styled.div`
     line-height: 1;
 `
 
+export const WhiteButton = styled( ButtonStyled )`
+    background-color: white;
+    color: #101a3f;
+    min-width: 220px;
+`
+
 function Button({ children, ...props }) {
     return (
         <ButtonStyled { ...props }>

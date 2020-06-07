@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Token from './token'
-import Button from './button'
+import { WhiteButton } from './button'
 
 const TableStyled = styled.div`
     display: grid;
@@ -32,6 +32,10 @@ const TableStyled = styled.div`
         font-weight: 700;
         letter-spacing: 1px;
     }
+
+    .results {
+        text-align: center;
+    }
 `
 
 const elements = [
@@ -50,9 +54,48 @@ function Table() {
     }
 
     const onClick = ( name ) => {
-        console.log( 'La casa eligio: ', elements[getRandomInt(0, 3)] )
         setPlaying( true )
         setPick( name )
+        const housePick = elements[getRandomInt(0, 3)]
+        const results = playWithIA( name, housePick )
+        console.log(results)
+    }
+
+    // Play With IA
+    const playWithIA = ( pick, housePick ) => {
+        if ( housePick === pick ) {
+            return 'Draw'
+        }
+
+        if ( pick === 'paper' ) {
+            if ( housePick === 'scissors' ) {
+                return 'Lose'
+            }
+
+            if ( housePick === 'rock' ) {
+                return 'Win'
+            }
+        }
+
+        if ( pick === 'scissors' ) {
+            if ( housePick === 'paper' ) {
+                return 'Win'
+            }
+
+            if ( housePick === 'rock' ) {
+                return 'Lose'
+            }
+        }
+
+        if ( pick === 'rock' ) {
+            if ( housePick === 'paper' ) {
+                return 'Lose'
+            }
+
+            if ( housePick === 'scissors' ) {
+                return 'Win'
+            }
+        }
     }
 
     // Try Again
@@ -84,9 +127,9 @@ function Table() {
 
                         <div className="results">
                             <h2>YOU ???</h2>
-                            <Button onClick={ handleTryAgainClick }>
+                            <WhiteButton onClick={ handleTryAgainClick }>
                                 TRY AGAIN
-                            </Button>
+                            </WhiteButton>
                         </div>
                     </>
                 )
